@@ -4,18 +4,19 @@ import img from '@/assets/images/wulei.jpeg';
 import { demo } from '@/utils';
 
 function App() {
-    const name: string = 'snowden';
-    const [count, setCount] = useState(0);
-    console.log('demo', demo());
+  const name: string = 'snowden444';
+  const [count, setCount] = useState(0);
 
-    return (
-        <div>
-            <img src={img} alt="img" />
-            <input value={count} />
-            {name}
-            <button onClick={() => setCount(count + 1)}>click</button>
-        </div>
-    );
+  console.log('demo', demo());
+
+  return (
+    <div>
+      <img src={img} alt="img" />
+      <input value={count} />
+      {name}
+      <button onClick={() => setCount(count + 1)}>click</button>
+    </div>
+  );
 }
 
 export default App;
