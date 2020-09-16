@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const slash = require('slash');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -33,7 +34,19 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[path][name]__[local]'
+                // 自定义css名称
+                getLocalIdent: (context, localIdentName, localName) => {
+                  const match = context.resourcePath.match(/src(.*)/);
+                  if (match && match[1]) {
+                    const antdProPath = match[1].replace('.less', '');
+                    const arr = slash(antdProPath)
+                      .split('/')
+                      .map(a => a.replace(/([A-Z])/g, '-$1'))
+                      .map(a => a.toLowerCase());
+                    return `ts-demo${arr.join('-')}-${localName}`.replace(/--/g, '-');
+                  }
+                  return localName;
+                }
               }
             }
           },
