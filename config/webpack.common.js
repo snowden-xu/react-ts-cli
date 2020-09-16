@@ -1,23 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    port: 8888
-    // open: true,
+    path: path.resolve(__dirname, '../dist'),
+    filename: '[name].[hash].js'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, '../src')
     }
   },
   module: {
@@ -34,7 +27,18 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]__[local]'
+              }
+            }
+          },
+          'less-loader'
+        ]
       },
       {
         test: /.(png|jpg|gif|jpeg|svg)$/,
@@ -50,7 +54,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'ts-demo',
       template: 'public/index.html'
-    }),
-    new CleanWebpackPlugin()
+    })
   ]
 };
