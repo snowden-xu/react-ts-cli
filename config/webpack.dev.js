@@ -5,6 +5,7 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     port: 8888,
@@ -21,7 +22,5 @@ module.exports = merge(common, {
       modules: false
     }
   }
-  //   plugins: [
-  //     new webpack.HotModuleReplacementPlugin()
-  //   ]
+  // plugins: [new webpack.HotModuleReplacementPlugin()]
 });
