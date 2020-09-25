@@ -6,7 +6,9 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name].[hash].js'
+    filename: '[name].[hash].js',
+    // 添加 chunkFilename
+    chunkFilename: '[name].[chunkhash:5].chunk.js'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],

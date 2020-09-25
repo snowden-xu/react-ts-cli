@@ -1,23 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './global.less';
-// import img from '@/assets/images/wulei.jpeg';
-import { demo } from '@/utils';
+// import { demo } from '@/utils';
 import Login from './pages/login';
+import Home from './pages/Home';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
-  const name: string = 'snowden';
-  const [count, setCount] = useState(0);
-
-  console.log('demo', demo());
-
   return (
-    <div>
-      <Login />
-      {/* <img src={img} alt="img" /> */}
-      <input value={count} />
-      {name}
-      <button onClick={() => setCount(count + 1)}>click</button>
-    </div>
+    <>
+      <Router>
+        <ul>
+          <li>
+            <Link to="/">login</Link>
+          </li>
+          <li>
+            <Link to="/home">home</Link>
+          </li>
+        </ul>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/home" component={Home} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 

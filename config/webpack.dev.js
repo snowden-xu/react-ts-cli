@@ -16,6 +16,7 @@ module.exports = merge(common, {
     hot: true,
     // 浏览器控制台将显示消息  'none' | 'info' | 'error' | 'warning'
     clientLogLevel: 'error',
+    historyApiFallback: true,
     stats: {
       // 添加资源信息
       assets: false,
@@ -26,6 +27,7 @@ module.exports = merge(common, {
       // 添加构建模块信息
       modules: false
     }
+    // https://github.com/jamiebuilds/react-loadable
   },
   plugins: [new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin()].filter(Boolean)
 });
