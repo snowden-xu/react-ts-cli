@@ -27,7 +27,6 @@ module.exports = merge(common, {
       // 添加构建模块信息
       modules: false
     }
-    // https://github.com/jamiebuilds/react-loadable
   },
   plugins: [new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin()].filter(Boolean)
 });

@@ -1,29 +1,27 @@
-import React from 'react';
-import './global.less';
-// import { demo } from '@/utils';
-import Login from './pages/login';
-import Home from './pages/Home';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+// 第三方
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-function App() {
+// 自定义
+import './global.less';
+import { routerData } from '@/router';
+import Nav from '@/layouts/Nav';
+
+const App = () => {
   return (
     <>
       <Router>
-        <ul>
-          <li>
-            <Link to="/">login</Link>
-          </li>
-          <li>
-            <Link to="/home">home</Link>
-          </li>
-        </ul>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/home" component={Home} />
-        </Switch>
+        <Nav />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            {routerData.map(item => {
+              return <Route exact path={item.path} component={item.component} key={item.path} />;
+            })}
+          </Switch>
+        </Suspense>
       </Router>
     </>
   );
-}
+};
 
 export default App;

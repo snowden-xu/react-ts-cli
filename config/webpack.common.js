@@ -50,7 +50,7 @@ module.exports = {
                       .split('/')
                       .map(a => a.replace(/([A-Z])/g, '-$1'))
                       .map(a => a.toLowerCase());
-                    return `ts-demo${arr.join('-')}-${localName}`.replace(/--/g, '-');
+                    return `${'demo'}${arr.join('-')}-${localName}`.replace(/--/g, '-');
                   }
                   return localName;
                 }
@@ -72,7 +72,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ts-demo',
+      title: 'demo',
+      favicon: 'public/favicon.ico',
       template: 'public/index.html'
     })
   ]

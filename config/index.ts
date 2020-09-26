@@ -1,1 +1,3 @@
-console.log(11)
+// export const config = {
+//   appName: 'ccp'
+// };
