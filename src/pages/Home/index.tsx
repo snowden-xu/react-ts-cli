@@ -1,12 +1,12 @@
 // 第三方
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button } from 'antd';
 
 // 自定义
 import styles from './index.less';
 
 // 项目首页
-const Home = () => {
+const Home: FC = () => {
   const [count, setCount] = useState(0);
 
   return (
@@ -18,5 +18,7 @@ const Home = () => {
     </div>
   );
 };
+
+Home.defaultProps = {};
 
 export default Home;
