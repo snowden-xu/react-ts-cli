@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 // 打包css
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// 压缩js代码
+// 压缩js
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(common, {
