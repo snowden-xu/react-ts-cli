@@ -5,15 +5,21 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config config/webpack.prod.js --progress",
-    "start": "webpack-dev-server --config config/webpack.dev.js --progress"
+    "start": "webpack-dev-server --config config/webpack.dev.js --progress",
+    "test": "eslint -c ./src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test"
+    }
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "antd": "^4.6.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "@reduxjs/toolkit": "^1.4.0",
-    "react-redux": "^7.2.1"
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -34,8 +40,11 @@
     "css-minimizer-webpack-plugin": "^1.1.4",
     "eslint": "^7.9.0",
     "eslint-loader": "^4.0.2",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.2",
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.4.1",
+    "husky": "^4.3.0",
     "less": "^3.12.2",
     "less-loader": "^7.0.1",
     "mini-css-extract-plugin": "^0.11.2",
