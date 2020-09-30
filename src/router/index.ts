@@ -17,17 +17,17 @@ interface IMenus {
 // 展平菜单
 function getFlatMenuData(menus: IMenus[]) {
   let arrays: IArrays[] = [];
-  menus.forEach(item => {
+  menus.forEach((item) => {
     if (item.children) {
       arrays.push({
         path: item.path,
-        component: routerConfig[item.code]
+        component: routerConfig[item.code],
       });
       arrays = [...arrays, ...getFlatMenuData(item.children)];
     } else {
       arrays.push({
         path: item.path,
-        component: routerConfig[item.code]
+        component: routerConfig[item.code],
       });
     }
   });

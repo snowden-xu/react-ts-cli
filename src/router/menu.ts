@@ -11,43 +11,43 @@ export const menuData: IMenuData[] = [
     name: '首页',
     icon: 'home',
     path: '/',
-    code: 'home'
+    code: 'home',
   },
   {
     name: '企业报表',
     icon: 'companyReport',
     path: '/company-report',
-    code: 'companyReport'
+    code: 'companyReport',
   },
   {
     name: '数据报表',
     icon: 'dataReport',
     path: '/data-report',
-    code: 'dataReport'
+    code: 'dataReport',
   },
   {
     name: 'CRA排行榜',
     icon: 'CRAranking',
     path: '/cra-ranking',
-    code: 'CRAranking'
+    code: 'CRAranking',
   },
   {
     name: '周报',
     icon: 'weekly',
     path: '/weekly',
-    code: 'weekly'
+    code: 'weekly',
   },
   {
     name: '中心库',
     icon: 'siteLibrary',
     path: '/site-library',
-    code: 'siteLibrary'
+    code: 'siteLibrary',
   },
   {
     name: '论坛',
     icon: 'forum',
     path: '/forum',
-    code: 'forum'
+    code: 'forum',
   },
   {
     name: '项目',
@@ -65,17 +65,17 @@ export const menuData: IMenuData[] = [
             name: '项目一览',
             icon: 'projectPreview',
             path: '/project/project-preview',
-            code: 'projectPreview'
+            code: 'projectPreview',
           },
           {
             name: '数据报表',
             icon: 'projectDataReport',
             path: '/project/projectDataReport',
-            code: 'projectDataReport'
-          }
-        ]
-      }
-    ]
+            code: 'projectDataReport',
+          },
+        ],
+      },
+    ],
   },
   {
     name: '中心',
@@ -87,14 +87,14 @@ export const menuData: IMenuData[] = [
         name: '中心一览',
         icon: 'sitePreview',
         path: '/site/site-preview',
-        code: 'sitePreview'
+        code: 'sitePreview',
       },
       {
         name: '中心风险',
         icon: 'siteRisk',
         path: '/site/site-risk',
-        code: 'siteRisk'
-      }
-    ]
-  }
+        code: 'siteRisk',
+      },
+    ],
+  },
 ];

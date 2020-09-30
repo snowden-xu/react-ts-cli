@@ -10,7 +10,7 @@ import styles from './Nav.less';
 const Nav = () => {
   return (
     <ul className={styles.wapper}>
-      {menuData.map(item => {
+      {menuData.map((item) => {
         return (
           <li key={item.code}>
             <Link to={item.path}>{item.name}</Link>

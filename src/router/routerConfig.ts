@@ -21,5 +21,5 @@ export const routerConfig: IRouterConfig = {
   projectDataReport: lazy(() => import('@/pages/projectDataReport')), // 数据报表
   site: lazy(() => import('@/pages/site')), // 中心
   sitePreview: lazy(() => import('@/pages/sitePreview')), // 中心一览
-  siteRisk: lazy(() => import('@/pages/siteRisk')) // 中心风险
+  siteRisk: lazy(() => import('@/pages/siteRisk')), // 中心风险
 };

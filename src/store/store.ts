@@ -5,10 +5,10 @@ const middleware = [...getDefaultMiddleware(), logger];
 
 export default configureStore({
   reducer: {
-    counter: counterReducer
+    counter: counterReducer,
   },
   middleware: process.env.NODE_ENV !== 'production' ? middleware : [],
-  devTools: process.env.NODE_ENV !== 'production'
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 // https://redux.js.org/tutorials/essentials/part-1-overview-concepts

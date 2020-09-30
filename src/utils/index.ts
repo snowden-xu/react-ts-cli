@@ -1,7 +1,5 @@
-function demo(){
-    return 'utils demo'
+function demo() {
+  return 'utils demo';
 }
 
-export {
-    demo
-}
+export { demo };
