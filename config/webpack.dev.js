@@ -3,8 +3,9 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const getLocalIp = require('./getLocalIp');
 const slash = require('slash');
+const getLocalIp = require('./getLocalIp');
+const host = getLocalIp();
 
 module.exports = merge(common, {
   mode: 'development',
@@ -25,14 +26,14 @@ module.exports = merge(common, {
                     const antdProPath = match[1].replace('.less', '');
                     const arr = slash(antdProPath)
                       .split('/')
-                      .map(a => a.replace(/([A-Z])/g, '-$1'))
-                      .map(a => a.toLowerCase());
+                      .map((a) => a.replace(/([A-Z])/g, '-$1'))
+                      .map((a) => a.toLowerCase());
                     return `${'demo'}${arr.join('-')}-${localName}`.replace(/--/g, '-');
                   }
                   return localName;
-                }
-              }
-            }
+                },
+              },
+            },
           },
           {
             loader: 'less-loader',
@@ -43,18 +44,18 @@ module.exports = merge(common, {
                   // 'link-color': '#1DA57A',
                   // 'border-radius-base': '2px'
                 },
-                javascriptEnabled: true
-              }
-            }
-          }
-        ]
-      }
-    ]
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    host: getLocalIp(),
+    host,
     port: 8888,
     // 热更新
     hot: true,
@@ -69,8 +70,20 @@ module.exports = merge(common, {
       // 通过对应的 bundle 显示入口起点
       entrypoints: false,
       // 添加构建模块信息
-      modules: false
-    }
+      modules: false,
+    },
+    proxy: [
+      // 直连后端打开注释
+      {
+        context: [`/api/ccp-web/**`],
+        target: 'http://trialos.test.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/$': '',
+        },
+        cookieDomainRewrite: host,
+      },
+    ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin()].filter(Boolean)
+  plugins: [new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin()].filter(Boolean),
 });

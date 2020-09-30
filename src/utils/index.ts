@@ -1,5 +1,1 @@
-function demo() {
-  return 'utils demo';
-}
-
-export { demo };
+export { urls } from './urls';

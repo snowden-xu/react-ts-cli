@@ -13,7 +13,6 @@ module.exports = {
     'react/jsx-no-undef': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'no-console': ['error', { allow: ['warn', 'error'] }], // 禁止使用console.log
   },
   // exclude: /assets/,
 };
