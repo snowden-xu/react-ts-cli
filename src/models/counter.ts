@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit';
+import { getConfigServer } from '@/services/home';
 
 interface CounterState {
   value: number;
@@ -24,7 +25,10 @@ const counterSlice = createSlice({
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
-export const incrementAsync = (amount: number) => (dispatch: Dispatch): void => {
+export const incrementAsync = (amount: number) => async (dispatch: Dispatch) => {
+  const res = await getConfigServer();
+  console.log(res, 'res');
+
   setTimeout(() => {
     dispatch(incrementByAmount(amount));
   }, 1000);
