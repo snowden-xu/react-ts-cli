@@ -24,36 +24,40 @@ const codeMessage: ICodeMessage = {
 };
 
 const request = axios.create({
-  baseURL: '/api/ccp-web/',
-  timeout: 1000,
+  baseURL: '/api/',
+  timeout: 10000,
   withCredentials: true,
 });
 
-// 请求拦截
-request.interceptors.request.use((config) => {
-  // 自定义header
-  return config;
-});
+// 请求拦截
+request.interceptors.request.use(
+  (config) => {
+    // 自定义header
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
-// 返回拦截
+// 响应拦截
 request.interceptors.response.use(
   (response) => {
-    const { status, data, config } = response;
-    if (status === 200) {
-      if (data.success) {
-        return data.data;
-      }
+    return response.data;
+  },
+  (error) => {
+    const { response, config } = error;
+    if (response) {
+      notification.error({
+        message: `请求错误 ${response.status}: ${config.url}`,
+        description: codeMessage[response.status],
+      });
     } else {
       notification.error({
-        message: `请求错误 ${status}: ${config.url}`,
-        description: codeMessage[status],
+        message: '网络请求异常，请稍后重试!',
       });
     }
-  },
-  () => {
-    notification.error({
-      message: '网络请求异常，请稍后重试!',
-    });
+    return Promise.reject(error);
   }
 );
 

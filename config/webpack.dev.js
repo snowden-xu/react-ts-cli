@@ -75,11 +75,11 @@ module.exports = merge(common, {
     proxy: [
       // 直连后端打开注释
       {
-        context: [`/api/ccp-web/**`],
-        target: 'http://trialos.test.com/',
+        context: [`/api/**`],
+        target: 'http://rest.apizza.net/mock/',
         changeOrigin: true,
         pathRewrite: {
-          '^/$': '',
+          '^/api': '',
         },
         cookieDomainRewrite: host,
       },

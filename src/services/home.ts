@@ -1,9 +1,10 @@
 import request from '@/utils/request';
-import { urls } from '@/utils';
 
 // 获取基本配置
-export async function getConfigServer() {
-  return await request.get(urls.getConfig, {
-    method: 'GET',
-  });
+async function getConfigServer() {
+  return request('467463224ed153482bca7cf6b1602d82/demo');
 }
+
+export default {
+  getConfigServer,
+};
