@@ -1,33 +1,42 @@
 // 第三方
-import React, { useEffect } from 'react';
-import { Spin } from 'antd';
+import React from 'react';
+// import { Spin } from 'antd';
+import { useRequest } from 'ahooks';
 
 // 自定义
-import Counter from '@/components/Counter';
+// import Counter from '@/components/Counter';
 import homeServices from '@/services/home';
-import useAsyncFn from '@/hooks/useAsyncFn';
+// import useAsyncFn from '@/hooks/useAsyncFn';
 
 const Home = () => {
-  const [state, fetchData] = useAsyncFn(homeServices.getConfigServer);
-  const { value, loading } = state;
-  console.log('value222', value?.name);
+  const { data, error, loading } = useRequest(homeServices.getConfigServer);
+  console.log('data', data);
+  // const { value, loading } = state;
+  // console.log('value222', value?.name);
+  //
+  // useEffect(() => {
+  //   fetchData();
+  // }, [fetchData]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  return (
-    <div>
-      {loading ? (
-        <Spin />
-      ) : (
-        <>
-          <span>{value?.name}</span>
-          <Counter />
-        </>
-      )}
-    </div>
-  );
+  // const [state, { toggle }] = useToggle();
+  if (error) {
+    return <div>failed to load</div>;
+  }
+  if (loading) {
+    return <div>loading...</div>;
+  }
+  return <div>Username: {data?.name}</div>;
+  // return (
+  //   <>
+  //     <div>
+  //       <p>Current Boolean: {String(state)}</p>
+  //       <p>
+  //         <button onClick={() => toggle()}>Toggle</button>
+  //       </p>
+  //     </div>
+  //     <Counter />
+  //   </>
+  // );
 };
 
 export default Home;
