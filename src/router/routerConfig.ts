@@ -9,6 +9,7 @@ interface IRouterConfig {
 // 路由和组件的映射关系
 export const routerConfig: IRouterConfig = {
   home: lazy(() => import('@/pages/home')), // 首页
+  hooks: lazy(() => import('@/pages/hooksDemo')), // hooksDemo
   companyReport: lazy(() => import('@/pages/companyReport')), // 企业报表
   dataReport: lazy(() => import('@/pages/dataReport')), // 数据报表
   CRAranking: lazy(() => import('@/pages/craRanking')), // CRA排行榜

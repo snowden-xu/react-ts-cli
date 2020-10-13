@@ -14,6 +14,12 @@ export const menuData: IMenuData[] = [
     code: 'home',
   },
   {
+    name: 'Hooks',
+    icon: 'hooks',
+    path: '/hooks',
+    code: 'hooks',
+  },
+  {
     name: '企业报表',
     icon: 'companyReport',
     path: '/company-report',
